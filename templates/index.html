@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}  <title>Django index Page</title>{% endblock title %} 
+</head>
+<body >
+    
+
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<center>Hi <h4>{{user.username}}</h4></center>
+<center>Ur Email <h4>{{user.email}}</h4></center>
+<center><form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+    <button>Logout</button>
+  
+  </form></center>
+{% else %}
+<center>Hi Please <a href="{% url "login" %}">  Login</a></center>
+{% endif %}
+
+{% endblock %}
+
+</body>
+</html>
+
+
+
